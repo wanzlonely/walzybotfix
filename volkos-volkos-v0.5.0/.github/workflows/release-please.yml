@@ -1,0 +1,31 @@
+name: release-please
+
+on:
+  push:
+    branches:
+      - main
+  release:
+    types: [published]
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run release-please
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          config-file: .release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  notify-telegram:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send simple release message to Telegram
+        run: |
+          MESSAGE="🚀 *New release* \`${{ github.event.release.tag_name }}\`%0A%0A📦 *Source code:* [Download here](${{ github.event.release.html_url }})"
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d parse_mode=MarkdownV2 \
+            -d text="$MESSAGE"
