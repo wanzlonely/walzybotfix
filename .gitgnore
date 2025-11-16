@@ -1,0 +1,34 @@
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+
+# WhatsApp session files
+session/
+auth/
+wa_session/
+*.session
+*.data.json
+*.db
+
+# Logs
+logs/
+*.log
+
+# Temp
+tmp/
+temp/
+
+# Builds
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
