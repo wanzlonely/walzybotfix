@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "version": "1.0",
+    "description": "WalzyFixRed Samurai - Node.js Telegram bot"
+  },
+  "startup": "npm install && node src/index.js",
+  "config": {
+    "files": [],
+    "logs": {
+      "custom": false
+    }
+  },
+  "variables": [
+    {
+      "name": "TELEGRAM_BOT_TOKEN",
+      "description": "Telegram bot token",
+      "env_variable": "TELEGRAM_BOT_TOKEN",
+      "default_value": "7971764454:AAE06NScK5R9p48pIi6P1w7Au1Ez9XdYh0E"
+    },
+    {
+      "name": "REQUIRED_GROUP_ID",
+      "description": "Telegram group ID required for access",
+      "env_variable": "REQUIRED_GROUP_ID",
+      "default_value": "-1003325663954"
+    },
+    {
+      "name": "WHATSAPP_SESSION",
+      "description": "WhatsApp session string (if relevant)",
+      "env_variable": "WHATSAPP_SESSION",
+      "default_value": ""
+    }
+  ]
+}
